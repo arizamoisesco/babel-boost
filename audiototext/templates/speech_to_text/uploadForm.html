@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title%} Upload file {% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {{  form.as_p }}
+        {% csrf_token %}
+        <p><input type="button" value="Procesar"></p>
+    </form>
+{% endblock %}
