@@ -11,7 +11,9 @@ def upload_file(request):
         if form.is_valid():
             file = form.cleaned_data['file']
             handle_uploaded_file(file)#Función para guardar el archivo en la carpeta
-            return render(request, 'speechtext/upload_success.html')
+            text = transcribe(file)
+            #return render(request, 'speechtext/upload_success.html', {'text': text})
+            return render(request, 'speechtext/upload_success.html', {'text': text})
     else:
         form = UploadFileForm()
     
@@ -26,6 +28,7 @@ def handle_uploaded_file(file):
         os.makedirs(folder_path)
 
     #Obtener la ruta completa del archivo a guardar
+    print(file.name)
     file_path = os.path.join(folder_path, file.name)
     
     with open(file_path, 'wb')as destination:
@@ -35,8 +38,8 @@ def handle_uploaded_file(file):
 def index(request):
     return HttpResponse(transcribe())
 
-def transcribe():
+def transcribe(audio):
     model = whisper.load_model("base")
-    audio_text = model.transcribe("audiototext/audios/audio5.ogg")
+    audio_text = model.transcribe(f"audiototext/audios/{audio}")
     result = audio_text["text"]
     return result
