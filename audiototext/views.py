@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import UploadFileForm
+from django.contrib.auth.decorators import login_required 
+from django.contrib.auth import authenticate, login
+
+from .forms import UploadFileForm, LoginForm
 
 import whisper
 import os
 
+@login_required 
 def upload_file(request):
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
@@ -43,3 +47,26 @@ def transcribe(audio):
     audio_text = model.transcribe(f"audiototext/audios/{audio}")
     result = audio_text["text"]
     return result
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request,
+                                username = cd['username'],
+                                password=cd['password'])
+            
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse("Autenticación exitosa")
+                else:
+                    return HttpResponse("Cuenta desactivada")
+            else:
+                return HttpResponse("Inicio de sesión invalido")
+            
+    else:
+        form = LoginForm()
+        
+    return render(request, "account/login.html", {'form': form})

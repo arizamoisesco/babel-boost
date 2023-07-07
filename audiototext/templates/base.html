@@ -10,7 +10,9 @@
 
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    {% if user.is_authenticated %}
+        {% block content %}
+        {% endblock %}
+    {% endif %}
 </body>
 </html>
