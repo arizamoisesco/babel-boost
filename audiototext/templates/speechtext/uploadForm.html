@@ -4,16 +4,19 @@
 {% block title%} Upload file {% endblock %}
 
 {% block content %}
-<nav>
-  <ul>
-    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
-  </ul>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <ul>
+      <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+    </ul>
+  </div>
+  
 </nav>
-<section class="content">
+<section class="content container d-flex justify-content-center align-items-center">
   <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <span class="form-title">Click para subir tu audio</span>
-    <p class="form-paragraph">
+    <span class="form-title text-center">Click para subir tu audio</span>
+    <p class="form-paragraph text-center">
       El archivo debe ser un audio
     </p>
     <label for="file-input" class="drop-container">
@@ -23,7 +26,7 @@
     </label>
     
     
-    <button type="submit" class="upload-file">Subir archivo
+    <button type="submit" class="upload-file ">Subir archivo
       <div class="star-1">
         <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
       </div>
@@ -45,5 +48,15 @@
     </button>
 </form>
 </section>
+
+<footer>
+  <section class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+      <!-- Copyright -->
+      <div class="text-white mb-3 mb-md-0">
+          Copyright © 2020. All rights reserved.
+      </div>
+      <!-- Copyright -->
+  </section>
+</footer>
     
 {% endblock %}

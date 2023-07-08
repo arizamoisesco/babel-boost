@@ -1,6 +1,13 @@
-<section class="result">
+{% extends "base.html" %}
+
+
+{% block title%} Result {% endblock %}
+
+{% block content %}
+<section class="result content container d-flex flex-column justify-content-center align-items-center">
     <h1>Resultado:</h1>
     <p>{{text}}</p>
-    <a href="{% url 'logout' %}">Cerrar sesión</a>
+    <a href="{% url 'upload' %}">Análiza un nuevo audio</a>
 </section>
+{% endblock %}
 
