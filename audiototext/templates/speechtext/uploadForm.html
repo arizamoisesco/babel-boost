@@ -4,10 +4,10 @@
 {% block title%} Upload file {% endblock %}
 
 {% block content %}
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark container-fluid">
   <div class="container-fluid">
-    <ul>
-      <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+    <ul class="navbar-nav">
+      <li class="nav-item"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
     </ul>
   </div>
   
@@ -49,11 +49,11 @@
 </form>
 </section>
 
-<footer>
+<footer class="fixed-bottom">
   <section class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
       <!-- Copyright -->
       <div class="text-white mb-3 mb-md-0">
-          Copyright © 2020. All rights reserved.
+          Copyright © 2023. All rights reserved.
       </div>
       <!-- Copyright -->
   </section>
