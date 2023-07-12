@@ -4,10 +4,35 @@
 {% block title%} Result {% endblock %}
 
 {% block content %}
-<section class="result content container d-flex flex-column justify-content-center align-items-center">
-    <h1>Resultado:</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark container-fluid">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="btn btn-outline-danger" href="{% url 'logout' %}">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<main class="container d-flex flex-column justify-content-center align-items-center">
+    
+
+    <h1>Resultado</h1>
     <p>{{text}}</p>
-    <a href="{% url 'upload' %}">Análiza un nuevo audio</a>
-</section>
+    <a class="icon-link" href="{% url 'upload' %}">
+        Análiza un nuevo audio
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z"/>
+        </svg>
+    </a>
+</main>
+
+<footer class="fixed-bottom">
+    <section class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+        <!-- Copyright -->
+        <div class="text-white mb-3 mb-md-0">
+            Copyright © 2023. All rights reserved.
+        </div>
+        <!-- Copyright -->
+    </section>
+  </footer>
 {% endblock %}
 
