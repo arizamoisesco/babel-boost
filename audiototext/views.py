@@ -3,7 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth import authenticate, login
 
-from .forms import UploadFileForm, LoginForm
+from account.forms import LoginForm
+
+from .forms import UploadFileForm
+
 
 import whisper
 import os
